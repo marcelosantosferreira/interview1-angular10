@@ -1,6 +1,9 @@
 # Interview1
 
+An Angular technical exercise for during an interview built in 20 min.
+Includes 3 unit tests and 3 integration tests (templates).
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+
 
 ## Development server
 
