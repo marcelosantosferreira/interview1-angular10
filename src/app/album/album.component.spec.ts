@@ -5,6 +5,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { DataService } from '../data/data.service';
 import { AlbumComponent } from './album.component';
 import { IAlbum } from '../album';
+import { By } from '@angular/platform-browser';
 
 describe('AlbumComponent', () => {
   let fixture: ComponentFixture<AlbumComponent>;
@@ -14,9 +15,9 @@ describe('AlbumComponent', () => {
   beforeEach(() => {
 
     fakeAlbum = [
-      {albumdId: 100,  id: 12, title: 'Fake Album', url: 'URL', thumbnailUrl: 'URL'},
-      {albumdId: 101,  id: 13, title: 'Fake Album 2', url: 'URL', thumbnailUrl: 'URL'},
-      {albumdId: 102,  id: 14, title: 'Fake Album 3', url: 'URL', thumbnailUrl: 'URL'}
+      {albumId: 100,  id: 12, title: 'Fake Album', url: 'URL', thumbnailUrl: 'URL'},
+      {albumId: 101,  id: 13, title: 'Fake Album 2', url: 'URL', thumbnailUrl: 'URL'},
+      {albumId: 102,  id: 14, title: 'Fake Album 3', url: 'URL', thumbnailUrl: 'URL'}
     ]
 
     mockDataService = jasmine.createSpyObj(['getAlbums']);
@@ -56,4 +57,13 @@ describe('AlbumComponent', () => {
 
     expect(fixture.componentInstance.albums.length).toBe(3);
   });
+
+  it('should create a table row - tr - for each album ',()=>{
+    mockDataService.getAlbums.and.returnValue(of(fakeAlbum));
+    fixture.detectChanges();
+
+    let trCollection = fixture.debugElement.queryAll(By.css('tr'));
+    expect(trCollection.length).toBe(3);
+  });
+
 });

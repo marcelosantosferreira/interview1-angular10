@@ -1,5 +1,5 @@
 export interface IAlbum{
-  albumdId: number,
+  albumId: number,
   id: number,
   title: string,
   url: string,
